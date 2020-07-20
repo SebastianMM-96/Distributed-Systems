@@ -23,3 +23,9 @@ Toda aplicación RMI se descompone en dos partes:
 
 ## Aplicación RMI
 
+![im1](img/RMI_1.png)
+
+La invocación remota se realiza de la siguiente manera:
+
+![im2](img/RMI_2.png)
+
