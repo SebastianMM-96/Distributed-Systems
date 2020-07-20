@@ -18,19 +18,20 @@ El socket tiene el tipo indicado, que especifica la semántica de la comunicaci�
 Los sockets SOCK_DGRAM y SOCK_RAW permiten el envío de datagramas a los correspondientes nombrados en llamadas a send(2). Los datagramas se reciben
 generalmente con recvfrom(2), que devuelve el siguiente datagrama con su dirección de retorno. Se devuelve un -1 si ocurre un error; en otro caso el valor devuelto es un descriptor para referenciar el socket.
 
-        #include <sys/types.h>
-        #include <sys/socket.h>
+    #include <sys/types.h>
+    #include <sys/socket.h>
 
-        int socket (int dominio, int tipo, int protocolo);
- 
+    int socket (int dominio, int tipo, int protocolo);
+
  
  2. **bind**: bind da al socket sockfd, la dirección local my_addr . my_addr tiene una longitud de addrlen bytes. Tradicionalmente, esto se conoce como "asignar un nombre a un
 socket" (cuando un socket se crea con socket(2), existe en un espacio de nombres (familia de direcciones) pero carece de nombre). Cero es el resultado en caso de éxito. En caso de error, -1 es el valor regresado y a errno
 se le asigna un valor apropiado.
 
-       #include <sys/types.h>
-       #include <sys/socket.h>
-       int bind (int sockfd, struct sockaddr *my_addr, int addrlen);
+    #include <sys/types.h>
+    #include <sys/socket.h>
+    
+    int bind (int sockfd, struct sockaddr *my_addr, int addrlen);
   
 3. **recvfrom**: La primitiva recvfrom se emplea para recibir mensajes desde un socket, y pueden utilizarse para recibir datos de un socket sea orientado a conexión o no.
 Si desde no es nulo, y el socket no es orientado a conexión, la dirección fuente del mensaje se llena. londesde es un parámetro por referencia, inicializado al tamaño del
@@ -44,13 +45,15 @@ devuelve el valor -1. El argumento flags de una llamada a recv se forma aplicand
   
         #include <sys/types.h>
         #include <sys/socket.h>
-        int recvfrom (int s , void * buf , int lon , unsigned int flags ,
-        struct sockaddr * desde , int * londesde );
+        int recvfrom (int s , void * buf , int lon , unsigned int flags , 
+         struct sockaddr * desde , int * londesde );
   
  4. **sendto**: sendto (al igual que send y sendmsg ) es utilizado para transmitir un mensaje a otro socket.
 La dirección de destino viene dada por to con tolen especificando su tamaño. La longitud del mensaje viene dada por len . Si el mensaje es demasiado largo para pasar
 automáticamente a través del protocolo inferior, es devuelto el error EMSGSIZE y el mensaje no es transmitido. Si no existe espacio disponible en el socket para contener el mensaje a enviar, entonces send se bloquea, a no ser que el socket ha sido habilitado en un modo de no bloqueo para la E/S (non-blocking I/O). La llamada select(2) puede ser utilizada para determinar cuando es posible enviar más información. La llamada retorna el número de caracteres enviados, o -1 si ha ocurrido un error. 
 
-       #include <sys/types.h>
-       #include <sys/socket.h>
-       int sendto (int s , const void * msg , int len , unsigned int flags, const struct sockaddr * to , int tolen );
+    #include <sys/types.h>
+    #include <sys/socket.h>
+
+    int sendto (int s , const void * msg , int len , 
+    unsigned int flags, const struct sockaddr * to , int tolen );
