@@ -49,11 +49,8 @@ devuelve el valor -1. El argumento flags de una llamada a recv se forma aplicand
   
  4. **sendto**: sendto (al igual que send y sendmsg ) es utilizado para transmitir un mensaje a otro socket.
 La dirección de destino viene dada por to con tolen especificando su tamaño. La longitud del mensaje viene dada por len . Si el mensaje es demasiado largo para pasar
-automáticamente a través del protocolo inferior, es devuelto el error EMSGSIZE y el mensaje no es transmitido. Si no existe espacio disponible en el socket para contener el mensaje a enviar, entonces
-send se bloquea, a no ser que el socket ha sido habilitado en un modo de no bloqueo para la E/S (non-blocking I/O). La llamada select(2) puede ser utilizada para determinar
-cuando es posible enviar más información. La llamada retorna el número de caracteres enviados, o -1 si ha ocurrido un error. 
+automáticamente a través del protocolo inferior, es devuelto el error EMSGSIZE y el mensaje no es transmitido. Si no existe espacio disponible en el socket para contener el mensaje a enviar, entonces send se bloquea, a no ser que el socket ha sido habilitado en un modo de no bloqueo para la E/S (non-blocking I/O). La llamada select(2) puede ser utilizada para determinar cuando es posible enviar más información. La llamada retorna el número de caracteres enviados, o -1 si ha ocurrido un error. 
 
-     #include <sys/types.h>
-     #include <sys/socket.h>
-     int sendto (int s , const void * msg , int len , unsigned int flags , 
-       const struct sockaddr * to , int tolen );
+       #include <sys/types.h>
+       #include <sys/socket.h>
+       int sendto (int s , const void * msg , int len , unsigned int flags, const struct sockaddr * to , int tolen );
