@@ -1,0 +1,7 @@
+* $> servidor.c gcc servidor.c -o servidor
+* $> ./servidor
+
+* $> cliente.c gcc cliente.c -o cliente
+* $> ./cliente 127.0.0.1 777
+
+Recordar al ejecutar el archivo *cliente.c* se debe de añadir una direccion IP y el puerto para hacer la conexion.
