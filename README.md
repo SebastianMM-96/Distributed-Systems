@@ -1,5 +1,4 @@
-# Distributed Systems
-## Sistemas Distribuidos 
+# Sístemas Distribuidos 
 
 Un sistema distribuido consiste de una colección de computadoras autónomas enlazadas
 por una red de comunicaciones y equipada con software para sistemas distribuidos. El software
